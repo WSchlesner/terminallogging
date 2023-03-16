@@ -1,0 +1,23 @@
+# Define function to record with Asciinema
+function record() {
+    # Prompt user to start recording if no arguments are provided
+    if [[ $# -eq 0 ]]; then
+        read -p "Would you like to start recording? (y/n) " choice
+        case "$choice" in
+            y|Y ) /usr/local/bin/asciinema rec ~/Recordings/$(date +'%d-%b-%Y')/$(date +'%H-%M-%S').cast;;
+            * ) echo "Recording aborted";;
+        esac
+    else
+        /usr/local/bin/asciinema rec ~/Recordings/$(date +'%d-%b-%Y')/$(date +'%H-%M-%S').cast
+    fi
+}
+
+# Create Recordings directory if it doesn't exist
+mkdir -p ~/Recordings/$(date +'%d-%b-%Y')
+
+# Prompt user to start recording on opening a new terminal
+read -p "Would you like to start recording? (y/n) " choice
+case "$choice" in
+    y|Y ) /usr/local/bin/asciinema rec ~/Recordings/$(date +'%d-%b-%Y')/$(date +'%H-%M-%S').cast;;
+    * ) echo "Recording aborted";;
+esac
