@@ -21,3 +21,16 @@ case "$choice" in
     y|Y ) /usr/local/bin/asciinema rec ~/Recordings/$(date +'%d-%b-%Y')/$(date +'%H-%M-%S').cast;;
     * ) echo "Recording aborted";;
 esac
+
+
+
+
+############
+
+alias record="start_recording"
+
+# Function to start recording terminal session
+function start_recording() {
+    echo "Starting terminal recording..."
+    script ~/logs/$(date +"%Y-%m-%d_%H-%M-%S").log
+}
